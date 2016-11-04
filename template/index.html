@@ -1,33 +1,45 @@
-<style type="text/css">
-    body {
-        margin:0px;
-        padding:0px;
-        font-family: Arial;
-        background: #f2f2f2;
-    }
-    textarea {
-        width: 90%;
-        border: 1px solid #999999;
-        background: #f2f2f2;
-        margin-top: 10px;
-        margin-left:5%;
-        margin-right:5%;
-        padding: 5px;
-        height: 50%;
-    }
-    input[type=submit] {
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert HTML to PDF</title>
+    <style type="text/css">
+        body {
+            margin:0px;
+            padding:0px;
+            font-family: Arial;
+            background: #f2f2f2;
+        }
+        textarea {
+            width: 90%;
+            border: 1px solid #999999;
+            background: #f2f2f2;
+            margin-top: 10px;
+            margin-left:5%;
+            margin-right:5%;
+            padding: 5px;
+            height: 50%;
+        }
+        input[type=submit] {
 
-        width: 90%;
-        border: 1px solid #222222;
-        background: #5cb85c;
-        margin-top: 10px;
-        margin-left:5%;
-        margin-right:5%;
-        padding: 5px;
-        height: 30px;
-    }
-</style>
-<form action="/" method="post">
-    <textarea name="html"></textarea>
-    <input type="submit" value="Convert">
-</form>
+            width: 90%;
+            border: 1px solid #222222;
+            background: #5cb85c;
+            margin-top: 10px;
+            margin-left:5%;
+            margin-right:5%;
+            padding: 5px;
+            height: 30px;
+        }
+        p.info {
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <form action="/" method="post">
+        <textarea name="html"></textarea>
+        <input type="submit" value="Convert">
+    </form>
+    <p class="info"> <a href="https://github.com/hkulekci/dompdf-example-with-slim">Source</a> </p>
+</body>
+</html>
