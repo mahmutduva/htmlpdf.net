@@ -21,12 +21,18 @@ $app->post('/', function (Request $request, Response $response) {
         $response->getBody()->write("ERROR!");
         return $response;
     }
+    $orientation = 'portrait';
+    if (isset($data['orientation']) && $data['orientation'] == 'landscape') {
+        $orientation = 'landscape';
+    }
 
     $dompdf = new Dompdf();
     $dompdf->loadHtml($data['html']);
-    $dompdf->setPaper('A4');
+    $dompdf->setPaper('A4', $orientation);
     $dompdf->render();
-    $response->getBody()->write($dompdf->stream());
+    $response = $response->withHeader('Content-type', 'application/pdf')
+        ->withHeader('Content-Disposition', 'attachment; filename="download.pdf"');
+    $response->getBody()->write($dompdf->output());
 
     return $response;
 });
