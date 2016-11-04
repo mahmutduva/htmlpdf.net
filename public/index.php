@@ -8,12 +8,7 @@ require 'vendor/autoload.php';
 $app = new \Slim\App;
 
 $app->get('/', function (Request $request, Response $response) {
-    $template = <<<EOT
-    <form action="/" method="post">
-    <textarea name="html"></textarea>
-    <input type="submit" value="Convert">
-    </form>
-EOT;
+    $template = file_get_contents('template/index.html');
     $response->getBody()->write($template);
 
     return $response;
@@ -29,7 +24,7 @@ $app->post('/', function (Request $request, Response $response) {
 
     $dompdf = new Dompdf();
     $dompdf->loadHtml($data['html']);
-    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->setPaper('A4');
     $dompdf->render();
     $response->getBody()->write($dompdf->stream());
 
