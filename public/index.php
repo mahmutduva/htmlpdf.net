@@ -5,10 +5,17 @@ use \Dompdf\Dompdf;
 
 require 'vendor/autoload.php';
 
+$dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
+$dotenv->load();
+
 $app = new \Slim\App;
 
 $app->get('/', function (Request $request, Response $response) {
     $template = file_get_contents('template/index.html');
+
+    var_dump(getenv('ANALYTICS_CODE'));exit;
+    $template = str_replace(['{{ANALYTICS_CODE}}'], [getenv('ANALYTICS_CODE')], $template);
+
     $response->getBody()->write($template);
 
     return $response;
