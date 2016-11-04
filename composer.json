@@ -1,0 +1,9 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "dompdf/dompdf": "^0.7.0"
+    },
+    "scripts": {
+        "start": "php -S 127.0.0.1:8888 -t public public/index.php"
+    }
+}
